@@ -55,14 +55,11 @@ fn calculate(num1: String, num2: String, operator: String) {
     match result {
         Ok(Number(i)) => println!("Result: {}",i),
         Err(_) => calculator_select_option("1".to_string()),
-        other => calculator_select_option("1".to_string()), 
-    
-    
+        other => {
+            println!("Invalid numbers or operator. Try again.");
+            calculator_select_option("1".to_string())
+        }, 
     }
     let option: String = calculator_menu();
     calculator_select_option(option);
-}
-
-fn print_type_of<T>(_: &T) {
-    println!("{}", std::any::type_name::<T>())
 }
