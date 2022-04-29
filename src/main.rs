@@ -51,7 +51,14 @@ fn calculator_start() {
 
 fn calculate(num1: String, num2: String, operator: String) {
     let expression: String = format!("{}{}{}", num1, operator, num2);
-    println!("{:?}", eval(&expression).unwrap());
+    let result = eval(&expression);
+    match result {
+        Ok(Number(i)) => println!("Result: {}",i),
+        Err(_) => calculator_select_option("1".to_string()),
+        other => calculator_select_option("1".to_string()), 
+    
+    
+    }
     let option: String = calculator_menu();
     calculator_select_option(option);
 }
